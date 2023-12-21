@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:salhurry_source/utils/size_config/size_config.dart';
 import 'package:salhurry_source/utils/theme/theme_const.dart';
-import 'onboarding_page/onboarding.dart';
+import 'screens/onboarding_page/onboarding.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -18,6 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     SizeConfig().init(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,

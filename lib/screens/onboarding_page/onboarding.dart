@@ -1,10 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
-import '../models/onboard_model.dart';
-import '../utils/size_config/size_config.dart';
-import '../utils/theme/theme_const.dart';
-import '../utils/widget/onboard_widget.dart';
+import '../../models/onboard_model.dart';
+import '../../utils/size_config/size_config.dart';
+import '../../utils/theme/theme_const.dart';
+import '../../utils/widget/dot_indicator.dart';
+import '../../utils/widget/getstartedbtn.dart';
+import '../../utils/widget/onboard_widget.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -51,10 +51,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     decoration: BoxDecoration(
                       color: themeConstant.primaryColor,
                       borderRadius: BorderRadius.only(
-                        bottomLeft:
-                            Radius.circular(SizeConfig.screenHeight * 0.15),
-                        bottomRight:
-                            Radius.circular(SizeConfig.screenHeight * 0.15),
+                        bottomLeft: Radius.circular(SizeConfig.constSize * 2),
+                        bottomRight: Radius.circular(SizeConfig.constSize * 2),
                       ),
                     ),
                   ),
@@ -82,7 +80,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               child: Text(
                                 "  Salhurry",
                                 style: TextStyle(
-                                  fontSize: SizeConfig.screenWidth * 0.04,
+                                  fontSize: SizeConfig.constSize * 0.25,
                                   color: Colors.white,
                                 ),
                               ),
@@ -121,9 +119,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.blockSizeH * 8),
+                        horizontal: SizeConfig.blockSizeH * 6),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ...List.generate(
                           demoData.length,
@@ -136,23 +133,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           ),
                         ),
                         const Spacer(),
-                        SizedBox(
-                          height: SizeConfig.screenHeight * 0.07,
-                          width: SizeConfig.screenHeight * 0.07,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _pageController.nextPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                shape: const CircleBorder(),
-                                backgroundColor: themeConstant.primaryColor),
-                            child: const Icon(
-                              Icons.keyboard_arrow_right,
-                            ),
-                          ),
+                        GetStartedBtn(
+                          pageController: _pageController,
+                          pageIndex: _pageIndex,
                         ),
                       ],
                     ),
@@ -166,36 +149,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class DotIndicator extends StatelessWidget {
-  const DotIndicator({
-    Key? key,
-    this.isActive = false,
-  }) : super(key: key);
-
-  final bool isActive;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height: isActive
-          ? SizeConfig.screenHeight * 0.02
-          : SizeConfig.screenHeight * 0.005,
-      width: isActive
-          ? SizeConfig.screenWidth * 0.01
-          : SizeConfig.screenWidth * 0.009,
-      decoration: BoxDecoration(
-        color: themeConstant.primaryColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            SizeConfig.screenHeight * 0.15,
-          ),
-        ),
       ),
     );
   }

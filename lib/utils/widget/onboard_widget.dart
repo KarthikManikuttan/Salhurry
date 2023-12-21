@@ -14,36 +14,38 @@ class OnboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          image,
-          height: SizeConfig.screenHeight * 0.45,
-          width: SizeConfig.screenWidth * 0.45,
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.035),
-          child: Text(
-            title,
-            style: GoogleFonts.inter(
-              fontSize: SizeConfig.screenWidth * 0.05,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Image.asset(
+            image,
+            height: SizeConfig.screenHeight * 0.45,
+            width: SizeConfig.screenWidth * 0.45,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.035),
+            child: Text(
+              title,
+              style: GoogleFonts.inter(
+                fontSize: SizeConfig.constSize * 0.3,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.004),
-          child: Text(
-            title2,
-            style: GoogleFonts.inter(
-              fontSize: SizeConfig.screenWidth * 0.05,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
+          Padding(
+            padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.004),
+            child: Text(
+              title2,
+              style: GoogleFonts.inter(
+                fontSize: SizeConfig.constSize * 0.35,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
